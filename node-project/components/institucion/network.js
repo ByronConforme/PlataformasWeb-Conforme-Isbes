@@ -26,4 +26,14 @@ router.get('/', function(req, res) {
         })
 })
 
+router.delete('/:id', function(req, res) {
+    controller.deleteInstitucion(req.params.id)
+        .then((data) => {
+            response.success(req, res, data, 200)
+        })
+        .catch((error) => {
+            response.error(req, res, 'Información inválida', 500, error)
+        })
+})
+
 module.exports = router
