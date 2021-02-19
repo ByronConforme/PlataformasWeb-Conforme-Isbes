@@ -28,7 +28,19 @@ function getInstituciones( filtroInstitucion ) {
     })
 }
 
+function deleteInstitucion(id_institucion) {
+    return new Promise( (resolve, reject) => {
+        if (!id_institucion) {
+            reject('No existe Institucion.')
+        }
+        storage.remove(id_institucion)
+            .then((data) => resolve(data))
+            .catch((error) => reject(error))
+    } )
+}
+
 module.exports = {
     addInstitucion,
     getInstituciones,
+    deleteInstitucion
 }
