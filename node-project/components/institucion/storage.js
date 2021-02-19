@@ -23,9 +23,13 @@ function getInstituciones( filtroInstitucion ) {
     })
 }
 
+function deleteInstitucion(id_institucion) {
+    return Model.deleteOne({ _id: id_institucion })
+}
+
 module.exports = {
     add: addInstitucion,
-    list: getInstituciones,/*
-    update: updateInstitucion,
-    remove: deleteInstitucion,*/
+    list: getInstituciones,
+
+    remove: deleteInstitucion,
 }
