@@ -22,6 +22,23 @@ function addInstitucion( nombre, domicilio, telefono, tipo_institucion, id_repre
     })
 }
 
+function updateInstitucion(id_institucion, nombre, domicilio, telefono, tipo_institucion) {
+    return new Promise( async (resolve, reject) => {
+        if (!id_institucion) {
+            reject(  'No existe ID.' )
+        }
+        const fullInstitucion = {
+            nombre: nombre,
+            domicilio: domicilio,
+            telefono: telefono,
+            tipo_institucion: tipo_institucion,
+            representante_legal: id_representante_legal,
+        }
+        const result = await storage.update( id_institucion, fullInstitucion )
+        resolve( result )
+    } )
+}
+
 function getInstituciones( filtroInstitucion ) {
     return new Promise((resolve, reject) => {
         resolve( storage.list( filtroInstitucion ) )
@@ -42,5 +59,6 @@ function deleteInstitucion(id_institucion) {
 module.exports = {
     addInstitucion,
     getInstituciones,
-    deleteInstitucion
+    updateInstitucion,
+    deleteInstitucion,
 }
