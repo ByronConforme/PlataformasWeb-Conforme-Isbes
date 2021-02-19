@@ -1,7 +1,7 @@
 const use = require('./network')
 const storage = require('./storage')
 
-function addInstitucion(nombre) {
+function addInstitucion( nombre, domicilio, telefono, tipo_institucion, id_representante_legal) {
     return new Promise( (resolve, reject) => {
         if (!nombre) {
             console.error('[MensajeControlado] No hay nombre de Institucion.')
@@ -14,7 +14,7 @@ function addInstitucion(nombre) {
             telefono: telefono,
             tipo_institucion: tipo_institucion,
             fecha_creacion: new Date(),
-            representante_legal: representante_legal,
+            representante_legal: id_representante_legal,
         }
         console.log( fullInstitucion )
         storage.add( fullInstitucion )
@@ -22,8 +22,13 @@ function addInstitucion(nombre) {
     })
 }
 
-
+function getInstituciones( filtroInstitucion ) {
+    return new Promise((resolve, reject) => {
+        resolve( storage.list( filtroInstitucion ) )
+    })
+}
 
 module.exports = {
     addInstitucion,
+    getInstituciones,
 }
