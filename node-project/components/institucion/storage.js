@@ -25,12 +25,12 @@ function getInstituciones( filtroInstitucion ) {
 
 async function updateInstitucion(id_institucion, nombre) {
     const foundInstitucion = await Model.findOne({ _id: id_institucion })
-
     if (foundInstitucion) {
         foundInstitucion.nombre = nombre.nombre
         foundInstitucion.domicilio = nombre.domicilio
         foundInstitucion.telefono = nombre.telefono
         foundInstitucion.tipo_institucion = nombre.tipo_institucion
+        foundInstitucion.representante_legal = nombre.representante_legal
         
         const newInstitucion = await foundInstitucion.save()
         return newInstitucion

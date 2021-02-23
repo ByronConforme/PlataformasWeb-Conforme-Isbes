@@ -22,7 +22,7 @@ function addInstitucion( nombre, domicilio, telefono, tipo_institucion, id_repre
     })
 }
 
-function updateInstitucion(id_institucion, nombre, domicilio, telefono, tipo_institucion) {
+function updateInstitucion(id_institucion, nombre, domicilio, telefono, tipo_institucion, id_representante_legal) {
     return new Promise( async (resolve, reject) => {
         if (!id_institucion) {
             reject(  'No existe ID.' )
