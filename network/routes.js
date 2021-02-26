@@ -1,7 +1,7 @@
 const express = require('express')
 const { route } = require('../components/usuario/network')
 const usuario = require('../components/usuario/network')
-const carrera = require('./components/carrera/network')
+const carrera = require('../components/carrera/network')
 const representante_legal = require('../components/representante_legal/network')
 const institucion = require('../components/institucion/network')
 
